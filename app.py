@@ -1,12 +1,9 @@
-from flask import Flask
+# Project 2 hints
 
-app = Flask(__name__)
+# roll 2 dice and accumulate points
 
+# stop before rolling a 1 and keep points
 
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+# roll a 1, lose points from this turn
 
-
-if __name__ == '__main__':
-    app.run()
+# Roll double 1s, lose all points
