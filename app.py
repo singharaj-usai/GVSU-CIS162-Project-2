@@ -32,6 +32,14 @@ def computerTurn(game_score, goal):
         if dice1 and dice2 == 1:
             return 0
 
+        # add both dice to the turn score.
+        # Print the rolled dice and turn score after each roll.
+        # At the end of the turn, return the updated game_score.
+        if turnTotal >= goal:
+            game_score += turnTotal
+            return game_score
+
 
 if __name__ == "__main__":
     print(roll_dice())
+    print(computerTurn(0, 20))
