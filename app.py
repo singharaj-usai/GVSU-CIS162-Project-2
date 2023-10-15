@@ -19,6 +19,9 @@ def roll_dice():
 
 def computerTurn(game_score, goal):
     turnTotal = 0
+    while True:
+        dice1, dice2 = roll_dice()
+        print(f"computer rolled {dice1}, {dice2} turn total: {turnTotal}")
 
 if __name__ == "__main__":
     print(roll_dice())
