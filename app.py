@@ -29,7 +29,7 @@ def computer_turn(game_score, goal):
             return game_score
 
         #  If double 1s are rolled, set game_score to zero and end the turn.
-        if dice1 and dice2 == 1:
+        if dice1 == dice2 == 1:
             return 0
 
         # add both dice to the turn score.
@@ -39,6 +39,7 @@ def computer_turn(game_score, goal):
             game_score += turnTotal
             return game_score
 
+        turnTotal += dice1 + dice2
 
 if __name__ == "__main__":
     print(roll_dice())
