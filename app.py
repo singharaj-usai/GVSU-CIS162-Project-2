@@ -17,7 +17,7 @@ def roll_dice():
 
 # step 2
 # computer_turn(game_score, goal) - performs the computer’s turn. Computer is provided a goal to achieve and then stop rolling for the current turn.
-def computerTurn(game_score, goal):
+def computer_turn(game_score, goal):
     # Turn total starts at zero.
     turnTotal = 0
     while True:
@@ -42,4 +42,4 @@ def computerTurn(game_score, goal):
 
 if __name__ == "__main__":
     print(roll_dice())
-    print(computerTurn(0, 20))
+    print(computer_turn(0, 20))
