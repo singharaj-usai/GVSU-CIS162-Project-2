@@ -76,12 +76,20 @@ def human_vs_computer():
     # Print the current score for each player (see sample output).
     while humanScore < 100 and computerScore < 100:
        # You: 57 Computer: 23
-        print(f"You: {humanScore} Computer: {computerScore}")
+        print(f"You: {humanScore}, Computer: {computerScore}")
+        humanScore = human_turn(humanScore)
+        if humanScore >= 100:
+            print("You won!!!")
+            break
 
-
+        computerScore = computer_turn(computerScore, computerGoal)
+        if computerScore >= 100:
+            print("The computer won!!")
+            break
 
 if __name__ == "__main__":
     print(roll_dice())
     computer_turn(0, 20)
     game_score = human_turn(57)
     print(f"updated gamescore: {game_score}")
+    human_vs_computer()
