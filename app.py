@@ -62,8 +62,26 @@ def human_turn(game_score):
         print(f"Turn total: {totalScore}")
 
 
+# human_vs_computer() – supports a full game of person versus the computer.
+# Play continues until someone wins with at least 100 points.
+# Human goes first.
+# Computer’s goal is 20 each turn.
+def human_vs_computer():
+    # init goal and score
+    computerGoal = 20
+    humanScore = 0
+    computerScore = 0
+
+    # Play continues until someone wins with at least 100 points
+    # Print the current score for each player (see sample output).
+    while humanScore < 100 and computerScore < 100:
+       # You: 57 Computer: 23
+        print(f"You: {humanScore} Computer: {computerScore}")
+
+
+
 if __name__ == "__main__":
     print(roll_dice())
-    print(computer_turn(0, 20))
+    computer_turn(0, 20)
     game_score = human_turn(57)
     print(f"updated gamescore: {game_score}")
