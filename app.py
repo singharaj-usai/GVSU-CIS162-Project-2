@@ -41,6 +41,20 @@ def computer_turn(game_score, goal):
 
         turnTotal += dice1 + dice2
 
+def human_turn(game_score):
+    totalScore = 0
+    while True:
+        dice1, dice2 = roll_dice()
+        print(f"you rolled {dice1}, {dice2} turn total: {totalScore}")
+
+        if dice1 == 1 or dice2 == 1:
+            print("you rolled 1. Turn lost")
+            return game_score
+
+
+
+
 if __name__ == "__main__":
     print(roll_dice())
     print(computer_turn(0, 20))
+    print(human_turn(57))
