@@ -51,10 +51,19 @@ def human_turn(game_score):
             print("you rolled 1. Turn lost")
             return game_score
 
+        choice = input("Roll again? (y/n) ").strip().lower()
 
+        if choice != "y":
+            game_score += totalScore
+            return game_score
+
+
+        totalScore += dice1 + dice2
+        print(f"Turn total: {totalScore}")
 
 
 if __name__ == "__main__":
     print(roll_dice())
     print(computer_turn(0, 20))
-    print(human_turn(57))
+    game_score = human_turn(57)
+    print(f"updated gamescore: {game_score}")
