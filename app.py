@@ -29,7 +29,7 @@ def computer_turn(game_score, goal):
             return game_score
 
         #  If double 1s are rolled, set game_score to zero and end the turn.
-        if dice1 == dice2 == 1:
+        elif dice1 and dice2 == 1:
             return 0
 
         # add both dice to the turn score.
