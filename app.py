@@ -26,16 +26,19 @@ def computer_turn(game_score, goal):
 
         # If a single 1 is rolled, set the current turn score to zero and end the turn.
         if dice1 == 1 or dice2 == 1:
+            print("computer rolled 1. turn score lost")
             return game_score
 
         #  If double 1s are rolled, set game_score to zero and end the turn.
         elif dice1 and dice2 == 1:
+            print("computer rolled double 1. Game score is 0")
             return 0
 
         # add both dice to the turn score.
         # Print the rolled dice and turn score after each roll.
         # At the end of the turn, return the updated game_score.
         if turnTotal >= goal:
+            print("Computer reached goal. Returned game score")
             game_score += turnTotal
             return game_score
 
