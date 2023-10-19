@@ -90,8 +90,28 @@ def human_vs_computer():
             print("The computer won!!")
             break
 
+def computer_solo(goal):  # Parameter: computer’s goal for each turn
+    # computer_solo(goal) – allows a lonely computer to play by itself with a goal for each turn.
+    # Call computer_turn() repeatedly until winning the game.
+    # Print the current turns and game score at the end of each turn.
+    # Print total turns at the end of the function.
+    # Also, return total turns.
+    currentTurns = 0
+    gameScore = 0
+    is_over = False
+    # Design Requirement: Use a while loop
+
+    while gameScore < 100:
+        print(f"turn: {currentTurns}, Score: {gameScore}")
+        gameScore = computer_turn(gameScore, goal)
+        currentTurns += 1
+    print(f"Turns: {currentTurns}")
+    return currentTurns
+
+
 if __name__ == "__main__":
     print(roll_dice())
     print(computer_turn(0, 20))
     print("Points", human_turn(57))
     human_vs_computer()
+    computer_solo(20)
