@@ -92,7 +92,6 @@ def human_vs_computer():
 
 if __name__ == "__main__":
     print(roll_dice())
-    computer_turn(0, 20)
-    game_score = human_turn(57)
-    print(f"updated gamescore: {game_score}")
+    print(computer_turn(0, 20))
+    print("Points", human_turn(57))
     human_vs_computer()
