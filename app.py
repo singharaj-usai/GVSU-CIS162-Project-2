@@ -117,6 +117,33 @@ def computer_solo(goal):  # Parameter: computer’s goal for each turn
 
     return current_turns
 
+# world_championship(games, goal_1, goal_2) – allows two ‘computerplayers’ to play each other a certain number of games.
+# For example, play seven games and determine which player wins the most.
+# Players have their own goal for each turn.
+# Call computer_turn() repeatedly until winning the game.
+def world_championship(games, goal_1, goal_2):
+    # init games
+    player1games = 0
+    player2games = 0
+
+    # Design Requirement: Use a for in range loop for the number of games.
+    # Use a whileloop to simulate each game.
+    # Call computer_turn() for each computer.
+    for i in range(games):
+        player1score = 0
+        player2score = 0
+
+        while player2score < 100 and player1score < 100:
+            player1score = computer_turn(player1score, goal_1)
+            player2score = computer_turn(player2score, goal_2)
+
+        if player1score >= 100:
+            player1games += 1
+        else:
+            player2games += 1
+
+    return player1games, player2games
+
 
 if __name__ == "__main__":
     print(roll_dice())
@@ -125,3 +152,4 @@ if __name__ == "__main__":
     human_vs_computer()
     currentTurns = computer_solo(20)
     print(f"the computer took {currentTurns} turn to win")
+    world_championship()
