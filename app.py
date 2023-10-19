@@ -96,28 +96,26 @@ def computer_solo(goal):  # Parameter: computer’s goal for each turn
     # Print the current turns and game score at the end of each turn.
     # Print total turns at the end of the function.
     # Also, return total turns.
-    currentTurns = 0
-    gameScore = 0
-    is_over = False
-    # Design Requirement: Use a while loop
+    current_turns = 0
+    game_score = 0
 
-    while gameScore < 100:
-        rounds = 0
-        while not is_over:
+    while game_score < 100:
+        round_total = 0
+        while round_total < goal:
             dice1, dice2 = roll_dice()
-            rounds += dice1 + dice2
-            print(f"computer rolled {dice1}, {dice2}. Turn total: {rounds}")
+            round_total += dice1 + dice2
+            print(f"computer rolled {dice1}, {dice2}. Turn total: {round_total}")
 
-            if rounds >= goal:
-                gameScore += rounds
-                currentTurns += 1
-                print(f"turn: {currentTurns}, Score: {gameScore}")
-                rounds = 0
-            elif dice1 == 1 or dice2 == 1:
-                rounds = 0
-                is_over = True
+            if dice1 == 1 or dice2 == 1:
+                print("computer rolled 1. Turn score lost")
+                round_total = 0
+                break
 
-        return currentTurns
+        game_score += round_total
+        current_turns += 1
+        print(f"turn: {current_turns}, Score: {game_score}")
+
+    return current_turns
 
 
 if __name__ == "__main__":
@@ -125,5 +123,5 @@ if __name__ == "__main__":
     print(computer_turn(0, 20))
     print("Points", human_turn(57))
     human_vs_computer()
-    totalTurns = computer_solo(20)
-    print(f"the computer took {totalTurns} turn to win")
+    currentTurns = computer_solo(20)
+    print(f"the computer took {currentTurns} turn to win")
