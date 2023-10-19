@@ -133,13 +133,22 @@ def world_championship(games, goal_1, goal_2):
         player1score = 0
         player2score = 0
 
-        while player2score < goal_2 and player1score < goal_1:
+        while True:
             player1score = computer_turn(player1score, goal_1)
-            player2score = computer_turn(player2score, goal_2)
 
-        if player1score >= goal_1:
+            if player1score >= goal_1 and player2score < goal_2:
+                player2score = computer_turn(player2score, goal_2)
+
+            player2score = computer_turn(player2score, goal_2)
+            if player2score >= goal_2 and player1score < goal_1:
+                player1score = computer_turn(player1score, goal_1)
+
+            if (player1score >= goal_1 or player2score >= goal_2) and (player1score != player2score):
+                break
+
+        if player1score > player2score:
             player1games += 1
-        elif player2score >= goal_2:
+        elif player2score > player1score:
             player2games += 1
 
     return player1games, player2games
@@ -152,4 +161,5 @@ if __name__ == "__main__":
     human_vs_computer()
     currentTurns = computer_solo(20)
     print(f"the computer took {currentTurns} turn to win")
-    world_championship(10, 20, 15)
+    result = world_championship(4, 12, 13)
+    print(result)
