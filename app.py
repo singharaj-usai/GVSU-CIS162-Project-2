@@ -208,3 +208,7 @@ if __name__ == "__main__":
     print(f"the computer took {currentTurns} turn to win")
     result = world_championship(4, 12, 13)
     print(result)
+
+# Support Instructor Testing
+if __name__ == '__main__': pass#human_vs_computer() #human_turn(10) #validate_response("Does this work (t/f)?",'t','f')
+
