@@ -9,6 +9,22 @@
 # Roll double 1s, lose all points
 
 import random
+
+def validate_response(choice):
+    validate_response = [
+        "Y",
+        "N",
+        "y",
+        "n"
+    ]
+
+    if choice in validate_response:
+        return True
+    else:
+
+        print("Oops! Your choice must be Y or N.")
+        return False
+
 # Step 1
 def roll_dice():
     dice1 = random.randint(1, 6)
