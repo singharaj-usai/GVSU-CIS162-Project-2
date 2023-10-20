@@ -43,7 +43,7 @@ def roll_dice():
 def computer_turn(game_score, goal):
 
     # Turn total starts at zero.
-    turnTotal = 0
+    turn_total = 0
 
     # while loop continues until the computers turn meets those if statements
     while True:
@@ -52,7 +52,7 @@ def computer_turn(game_score, goal):
         dice1, dice2 = roll_dice()
 
         # Print the computer's dice roll and the total turn
-        print(f"computer rolled {dice1}, {dice2} turn total: {turnTotal}")
+        print(f"computer rolled {dice1}, {dice2} turn total: {turn_total}")
 
         # If a single 1 is rolled, set the current turn score to zero and end the turn.
         if dice1 == 1 or dice2 == 1:
@@ -67,25 +67,25 @@ def computer_turn(game_score, goal):
         # add both dice to the turn score.
         # Print the rolled dice and turn score after each roll.
         # At the end of the turn, return the updated game_score.
-        if turnTotal >= goal:
+        if turn_total >= goal:
             print("Computer reached goal. Returned game score")
 
             # Update the game score
-            game_score += turnTotal
+            game_score += turn_total
 
             # return the game score
             return game_score
 
         # add the total turn to both of the dices
-        turnTotal += dice1 + dice2
+        turn_total += dice1 + dice2
 
 def human_turn(game_score):
 
     # init total score
-    totalScore = 0
+    total_score = 0
     while True:
         dice1, dice2 = roll_dice()
-        print(f"you rolled {dice1}, {dice2} turn total: {totalScore}")
+        print(f"you rolled {dice1}, {dice2} turn total: {total_score}")
 
         # check if either dice is rolled 1
         if dice1 == 1 or dice2 == 1:
@@ -101,16 +101,16 @@ def human_turn(game_score):
         if choice != "y":
 
             # add the game score to total score
-            game_score += totalScore
+            game_score += total_score
 
             # and return the game score
             return game_score
 
         # Add the total score to both dices if player choose to roll again
-        totalScore += dice1 + dice2
+        total_score += dice1 + dice2
 
         #Print the updated score
-        print(f"Turn total: {totalScore}")
+        print(f"Turn total: {total_score}")
 
 
 # human_vs_computer() – supports a full game of person versus the computer.
@@ -120,20 +120,20 @@ def human_turn(game_score):
 def human_vs_computer():
 
     # init goal and score
-    computerGoal = 20
-    humanScore = 0
-    computerScore = 0
+    computer_goal = 20
+    human_score = 0
+    computer_score = 0
 
     # Play continues until someone wins with at least 100 points
     # Print the current score for each player (see sample output).
-    while humanScore < 100 and computerScore < 100:
+    while human_score < 100 and computer_score < 100:
 
        # You: 57 Computer: 23
-        print(f"You: {humanScore}, Computer: {computerScore}")
-        humanScore = human_turn(humanScore)
+        print(f"You: {human_score}, Computer: {computer_score}")
+        human_score = human_turn(human_score)
 
         # If you reach 100 points or more
-        if humanScore >= 100:
+        if human_score >= 100:
 
             # Print you won,
             print("You won!!!")
@@ -141,10 +141,10 @@ def human_vs_computer():
             # And end the game
             break
 
-        computerScore = computer_turn(computerScore, computerGoal)
+        computer_score = computer_turn(computer_score, computer_goal)
 
         # If the computer wins 100 points or more
-        if computerScore >= 100:
+        if computer_score >= 100:
 
             # Print the computer won
             print("The computer won!!")
