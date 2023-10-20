@@ -1,3 +1,10 @@
+'''
+SINGHARAJ USAI
+A dice game that you can play with a computer as the foe using the console prompts
+I certify that this code is mine, and mine alone, in accordance with GVSU academic honesty policy.
+10/20/2023
+'''
+
 # Project 2 hints
 
 # roll 2 dice and accumulate points
