@@ -36,8 +36,11 @@ def roll_dice():
 def computer_turn(game_score, goal):
     # Turn total starts at zero.
     turnTotal = 0
+    # while loop continues until the computers turn meets those if statements
     while True:
+        # Store the roll_dice func with the dice1 and dice2 values
         dice1, dice2 = roll_dice()
+        # Print the computer's dice roll and the total turn
         print(f"computer rolled {dice1}, {dice2} turn total: {turnTotal}")
 
         # If a single 1 is rolled, set the current turn score to zero and end the turn.
@@ -55,29 +58,35 @@ def computer_turn(game_score, goal):
         # At the end of the turn, return the updated game_score.
         if turnTotal >= goal:
             print("Computer reached goal. Returned game score")
+            # Update the game score
             game_score += turnTotal
+            # return the game score
             return game_score
-
+        # add the total turn to both of the dices
         turnTotal += dice1 + dice2
 
 def human_turn(game_score):
+    # init total score
     totalScore = 0
     while True:
         dice1, dice2 = roll_dice()
         print(f"you rolled {dice1}, {dice2} turn total: {totalScore}")
-
+        # check if either dice is rolled 1
         if dice1 == 1 or dice2 == 1:
+            # if it is, print and return the game score
             print("you rolled 1. Turn lost")
             return game_score
-
+        # Choice prompt
         choice = input("Roll again? (y/n) ").strip().lower()
-
+        # If player doesn't input y,
         if choice != "y":
+            # add the game score to total score
             game_score += totalScore
+            # and return the game score
             return game_score
-
-
+        # Add the total score to both dices if player choose to roll again
         totalScore += dice1 + dice2
+        #Print the updated score
         print(f"Turn total: {totalScore}")
 
 
@@ -97,13 +106,19 @@ def human_vs_computer():
        # You: 57 Computer: 23
         print(f"You: {humanScore}, Computer: {computerScore}")
         humanScore = human_turn(humanScore)
+        # If you reach 100 points or more
         if humanScore >= 100:
+            # Print you won,
             print("You won!!!")
+            # And end the game
             break
 
         computerScore = computer_turn(computerScore, computerGoal)
+        # If the computer wins 100 points or more
         if computerScore >= 100:
+            # Print the computer won
             print("The computer won!!")
+            # and end the game
             break
 
 def computer_solo(goal):  # Parameter: computer’s goal for each turn
@@ -114,21 +129,30 @@ def computer_solo(goal):  # Parameter: computer’s goal for each turn
     # Also, return total turns.
     current_turns = 0
     game_score = 0
-
+    # Keep playing until the computers score reaches 100
     while game_score < 100:
         round_total = 0
+        # Keep playing until the round reaches the goal
         while round_total < goal:
+            # Store the dices to roll_dice func
             dice1, dice2 = roll_dice()
+            # Add the round total to the dices
             round_total += dice1 + dice2
+            # Pprint the results and total round
             print(f"computer rolled {dice1}, {dice2}. Turn total: {round_total}")
-
+            # If either dice is 1
             if dice1 == 1 or dice2 == 1:
+                # Print
                 print("computer rolled 1. Turn score lost")
+                # Reset the round total to 0
                 round_total = 0
+                # and end the round
                 break
-
+        # Add the gamescore with round total
         game_score += round_total
+        # Increment the current turn 1
         current_turns += 1
+        # Print the current turn and score
         print(f"turn: {current_turns}, Score: {game_score}")
 
     return current_turns
@@ -150,21 +174,26 @@ def world_championship(games, goal_1, goal_2):
         player2score = 0
 
         while True:
+            # Store player score to computer_turn function and the goal
             player1score = computer_turn(player1score, goal_1)
-
+            # Check to see if player1's score is greater than or equal score, and if player2's is below their goal
             if player1score >= goal_1 and player2score < goal_2:
                 player2score = computer_turn(player2score, goal_2)
 
             player2score = computer_turn(player2score, goal_2)
+            # Check to see if player2's score is greater than or equal score, and if player1's is below their goal
             if player2score >= goal_2 and player1score < goal_1:
                 player1score = computer_turn(player1score, goal_1)
-
+            # Check if either of the player reached the goal and different score
             if (player1score >= goal_1 or player2score >= goal_2) and (player1score != player2score):
                 break
-
+        # Calculate winner
         if player1score > player2score:
+            # Increment
             player1games += 1
+        # Otherwise player2 score
         elif player2score > player1score:
+            # Increment theirs
             player2games += 1
 
     return player1games, player2games
